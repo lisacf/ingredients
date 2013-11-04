@@ -1,0 +1,55 @@
+<div class="container">
+<div class="row">
+  <div class="col-sm-6">
+    <h1><%= @recipe.name %></h1>
+  </div>
+  <div class="col-sm-6">
+      <%= form_tag :recipe, method: 'get' do %>
+        <%= label_tag :scale, "Scale by:" %>
+        <%= text_field_tag :scale %>
+        <%= submit_tag "submit", id: 'submit_scale'%>
+      <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <fieldset>
+      <legend>Ingredients Entered</legend>
+	    <%= markdown(@recipe.components) %>
+    </fieldset>
+  </div>
+  <div class="col-sm-4">
+    <fieldset>
+      <legend>Parsed Ingredients</legend>
+      <ul>
+  		  <% @recipe.proportions.each do |item| %>
+          <li><span class="red"><%= float_to_fraction(item.amount) unless item.amount.nil?  %> </span>
+          <span class="purple"><%= measure_render(item.measure, item.amount) %></span>
+           <%= item.ingredient.name %> <%= item.comment.empty? ?  "":("* #{(item.comment).delete('(', ')')}" ) %>
+           </li>
+        <% end %>
+	     </ul>
+     </fieldset>
+  </div>
+  <div class="col-sm-4">
+  <% scale %>
+  <fieldset>
+      <legend>
+        <% if @scale.nil? %>
+          Enter a # to scale recipe
+        <% else %>
+          Scaled by <%= @scale %>
+        <% end %>
+      </legend>
+      <ul>
+        <% @scaled_proportions.each do |item| %>
+          <li><span class="red"><%= float_to_fraction(item.amount) unless item.amount.nil?  %> </span>
+          <span class="purple"><%= measure_render(item.measure, item.amount) %></span>
+           <%= item.ingredient.name %> <%= item.comment.empty? ?  "":("* #{(item.comment).delete('(', ')')}" ) %>
+           </li>
+        <% end %>
+       </ul>
+     </fieldset>
+  </div>
+</div>
+<%= link_to 'New Recipe', new_recipe_path %>|<%= link_to 'Edit', edit_recipe_path(@recipe) %>| <%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %>

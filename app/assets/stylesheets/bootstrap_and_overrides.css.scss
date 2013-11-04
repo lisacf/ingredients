@@ -1,0 +1,41 @@
+@import "twitter/bootstrap";
+// @import "bootstrap";
+body { padding-top: 60px;}
+.red {color: red;}
+.purple { color: purple; }
+#submit_scale {
+	  position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+// body,
+// .container,
+// li,
+// p,
+// input,
+// button,
+// select,
+// textarea,
+// .navbar-search, .search-query {
+//   font-family:  "Josefin Sans", sans-serif;
+// }
+// @import "bootstrap-responsive";
+
+
+// Font Awesome
+// @import "font-awesome";
+
+// Glyphicons
+//  @import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+
+// Example:
+// @linkColor: #ff0000;
+
