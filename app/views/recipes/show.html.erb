@@ -25,7 +25,7 @@
   		  <% @recipe.proportions.each do |item| %>
           <li><span class="red"><%= float_to_fraction(item.amount) unless item.amount.nil?  %> </span>
           <span class="purple"><%= measure_render(item.measure, item.amount) %></span>
-           <%= item.ingredient.name %> <%= item.comment.empty? ?  "":("* #{(item.comment).delete('(', ')')}" ) %>
+           <%= item.ingredient.name %> <%= item.comment.empty? ?  "":("* #{(item.comment)}" ) %>
            </li>
         <% end %>
 	     </ul>

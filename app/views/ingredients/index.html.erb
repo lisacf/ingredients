@@ -3,7 +3,7 @@
 		<h1>Ingredients</h1>
 		<ol>
 			<% @ingredients.each do |ingredient| %>
-				<li> <%= ingredient.name %></li>
+				<li> <%= ingredient.name %> <%= link_to 'Delete', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 			<% end %>
 		</ol>
 	</div>
